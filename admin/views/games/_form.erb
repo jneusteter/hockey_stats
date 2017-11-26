@@ -1,0 +1,49 @@
+<% error = @game.errors.key?(:game_number) && @game.errors[:game_number].count > 0 %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :game_number, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :game_number, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:game_number) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @game.errors.key?(:team_id) && @game.errors[:team_id].count > 0 %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :team_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :team_id, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:team_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @game.errors.key?(:datetime_played) && @game.errors[:datetime_played].count > 0 %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :datetime_played, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :datetime_played, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:datetime_played) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @game.errors.key?(:home_away) && @game.errors[:home_away].count > 0 %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :home_away, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :home_away, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:home_away) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+<% error = @game.errors.key?(:type) && @game.errors[:type].count > 0 %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :type, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :type, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:type) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
+
+
+<div class="form-actions">
+  <%= f.submit pat(:save), :class => 'btn btn-primary' %>
+  &nbsp;
+  <%= f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue' %>
+  &nbsp;
+  <%= link_to pat(:cancel), url(:games, :index), :class => 'btn btn-default' %>
+</div>

@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs">
+  <li> <%= link_to tag_icon(:list, pat(:list)), url(:plus_minus, :index) %></li>
+  <li> <%= link_to tag_icon(:plus, pat(:new)), url(:plus_minus, :new) %></li>
+  <li class="active"> <%= link_to tag_icon(:edit, pat(:edit)), url(:plus_minus, :edit, :id => @plus_minus.id) %></li>
+</ul>
+<div class="tabs-content">
+  <% form_for :plus_minus, url(:plus_minus, :update, :id => @plus_minus.id), :method => :put, :class => 'form-horizontal' do |f| %>
+    <%= partial 'plus_minus/form', :locals => { :f => f } %>
+  <% end %>
+</div>
