@@ -13,6 +13,7 @@ gem 'sequel'
 # Test requirements
 gem 'rspec', :group => 'test'
 gem 'rack-test', :require => 'rack/test', :group => 'test'
+gem 'rubocop', require: false
 
 # Padrino Stable Gem
 gem 'padrino', '0.14.1.1'
