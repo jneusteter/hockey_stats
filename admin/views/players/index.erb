@@ -37,7 +37,6 @@
           </div>
         </th>
                 <th class=header> <%= mat(:player, :id) %></th>
-                <th class=header> <%= mat(:player, :jersey_number) %></th>
                 <th class=header> <%= mat(:player, :first_name) %></th>
                 <th class=header> <%= mat(:player, :last_name) %></th>
                 <th class="header list-row-action-header"></th>
@@ -51,7 +50,6 @@
             <%= check_box_tag 'player_ids[]', :value => player.id, :class => 'list-selectable-checkbox' %>
            </td>
           <td class=list-column> <%= player.id %> </td>
-          <td class=list-column> <%= player.jersey_number %> </td>
           <td class=list-column> <%= player.first_name %> </td>
           <td class=list-column> <%= player.last_name %> </td>
           <td class="list-column list-row-action">

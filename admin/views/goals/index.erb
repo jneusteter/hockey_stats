@@ -37,8 +37,8 @@
           </div>
         </th>
                 <th class=header> <%= mat(:goal, :id) %></th>
-                <th class=header> <%= mat(:goal, :game_number) %></th>
-                <th class=header> <%= mat(:goal, :scored_by) %></th>
+                <th class=header> <%= mat(:goal, :game_id) %></th>
+                <th class=header> <%= mat(:goal, :player_id) %></th>
                 <th class=header> <%= mat(:goal, :assist_one) %></th>
                 <th class=header> <%= mat(:goal, :assist_two) %></th>
                 <th class=header> <%= mat(:goal, :period) %></th>
@@ -53,8 +53,8 @@
             <%= check_box_tag 'goal_ids[]', :value => goal.id, :class => 'list-selectable-checkbox' %>
            </td>
           <td class=list-column> <%= goal.id %> </td>
-          <td class=list-column> <%= goal.game_number %> </td>
-          <td class=list-column> <%= goal.scored_by %> </td>
+          <td class=list-column> <%= goal.game_id %> </td>
+          <td class=list-column> <%= goal.player_id %> </td>
           <td class=list-column> <%= goal.assist_one %> </td>
           <td class=list-column> <%= goal.assist_two %> </td>
           <td class=list-column> <%= goal.period %> </td>
