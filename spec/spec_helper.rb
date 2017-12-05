@@ -4,6 +4,12 @@ Dir[File.expand_path(File.dirname(__FILE__) + "/../app/helpers/**/*.rb")].each(&
 
 RSpec.configure do |conf|
   conf.include Rack::Test::Methods
+
+  conf.include FactoryBot::Syntax::Methods
+
+  conf.before(:suite) do
+    FactoryBot.find_definitions
+  end
 end
 
 # You can use this method to custom specify a Rack app
