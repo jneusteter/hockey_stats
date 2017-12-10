@@ -5,12 +5,11 @@ Dir[File.expand_path(File.dirname(__FILE__) + '/../app/helpers/**/*.rb')].each(&
 RSpec.configure do |conf|
   conf.include Rack::Test::Methods
 
-<<<<<<< HEAD
   conf.include FactoryBot::Syntax::Methods
 
   conf.before(:suite) do
     FactoryBot.find_definitions
-=======
+  end
   # FactoryBot
   conf.include FactoryBot::Syntax::Methods
   FactoryBot.definition_file_paths = [
@@ -28,7 +27,6 @@ RSpec.configure do |conf|
     tables_to_be_emptied.each do |table|
       Sequel::Model.db[table].delete
     end
->>>>>>> base
   end
 end
 
