@@ -5,3 +5,7 @@ Sequel::Model.db = case Padrino.env
   when :production  then Sequel.connect("sqlite://db/hockey_stats_tracker_production.db",  :loggers => [logger])
   when :test        then Sequel.connect("sqlite://db/hockey_stats_tracker_test.db",        :loggers => [logger])
 end
+
+Sequel.inflections do |inflect|
+  inflect.uncountable 'plus_minus', 'plus_minus'
+end

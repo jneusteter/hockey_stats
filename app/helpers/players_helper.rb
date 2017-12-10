@@ -3,9 +3,9 @@
 module HockeyStatsTracker
   class App
     module PlayersHelper
-      # def simple_helper_method
-      # ...
-      # end
+      def total_plus_minus(player_id)
+        PlusMinus.total_plus_minus(player_id)
+      end
     end
 
     helpers PlayersHelper
