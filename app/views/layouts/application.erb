@@ -10,12 +10,12 @@
     <%= stylesheet_link_tag 'bootstrap', 'application' %>
   </head>
   <body>
-    <div class="navbar-inverse">
+    <nav class="navbar-inverse">
       <div class="container">
         <%= link_to 'Home', url(:base, :index), class: 'navbar-brand', title: 'Hockey Stats Home' %>
         <%= link_to 'Players', url(:players, :index), class: 'navbar-brand', title: 'Players' %>
       </div>
-    </div>
+    </nav>
 
     <div class="container-fluid">
       <%= yield %>
