@@ -1,0 +1,26 @@
+<h1>Games Played by Atom Rep</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Game ID</th>
+      <th>Team</th>
+      <th>Date</th>
+      <th>Home/Away</th>
+      <th>Type</th>
+      <th>Goals F</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @games.each do |game| %>
+    <tr>
+      <td><%= game.id %></td>
+      <td><%= game.team.town %> <%= game.team.name %> </td>
+      <td><%= game.datetime_played %></td>
+      <td><%= game.home_away.capitalize %></td>
+      <td><%= game.type.capitalize %></td>
+      <td><%= game.goals.count %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
