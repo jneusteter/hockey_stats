@@ -19,7 +19,7 @@
   <%= f.label :datetime_played, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :datetime_played, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:datetime_played) : "Ex: a simple text" %></span>
+    <span class='help-inline'><%= error ? f.error_message_on(:datetime_played) : "" %></span>
   </div>
 </fieldset>
 <% error = @game.errors.key?(:home_away) && @game.errors[:home_away].count > 0 %>
@@ -27,7 +27,7 @@
   <%= f.label :home_away, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :home_away, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:home_away) : "Ex: a simple text" %></span>
+    <span class='help-inline'><%= error ? f.error_message_on(:home_away) : "" %></span>
   </div>
 </fieldset>
 <% error = @game.errors.key?(:type) && @game.errors[:type].count > 0 %>
@@ -35,7 +35,7 @@
   <%= f.label :type, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :type, :class => 'form-control input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:type) : "Ex: a simple text" %></span>
+    <span class='help-inline'><%= error ? f.error_message_on(:type) : "" %></span>
   </div>
 </fieldset>
 
