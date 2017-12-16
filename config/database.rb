@@ -9,3 +9,8 @@ end
 Sequel.inflections do |inflect|
   inflect.uncountable 'plus_minus', 'plus_minus'
 end
+
+# Alias save for factory bot.
+class Sequel::Model
+  alias save! save
+end
