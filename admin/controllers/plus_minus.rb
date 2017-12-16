@@ -1,7 +1,7 @@
 HockeyStatsTracker::Admin.controllers :plus_minus do
   get :index do
     @title = "Plus_minus"
-    @plus_minus = PlusMinus.all
+    @plus_minus = PlusMinus.all.reverse
     render 'plus_minus/index'
   end
 
@@ -78,9 +78,9 @@ HockeyStatsTracker::Admin.controllers :plus_minus do
     end
     ids = params[:plus_minus_ids].split(',').map(&:strip)
     plus_minus = PlusMinus.where(:id => ids)
-    
+
     if plus_minus.destroy
-    
+
       flash[:success] = pat(:destroy_many_success, :model => 'Plus_minus', :ids => "#{ids.join(', ')}")
     end
     redirect url(:plus_minus, :index)
