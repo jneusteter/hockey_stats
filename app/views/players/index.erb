@@ -5,7 +5,8 @@
     <tr>
       <th>Player Name</th>
       <th>Goals</th>
-      <th>Assist</th>
+      <th>Assist One</th>
+      <th>Assist Two</th>
       <th>+/-</th>
     </tr>
   </thead>
@@ -14,7 +15,8 @@
     <tr>
       <td> <a href="/players/show/<%= player.id %>"><%= player.id %> <%= player.first_name %> <%= player.last_name %></a></td>
       <td><%= player.goals.count %></td>
-      <td></td>
+      <td><%= total_assist_one(player.id) %></td>
+      <td><%= total_assist_two(player.id) %></td>
       <td><%= total_plus_minus(player.id) %></td>
     </tr>
     <% end %>
