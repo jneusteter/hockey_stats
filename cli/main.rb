@@ -1,7 +1,6 @@
 require 'sqlite3'
 require 'sequel'
-
-DB = Sequel.connect('sqlite://db/hockey_stats_tracker_development.db')
+require_relative 'config.rb'
 
 require_relative './add_game'
 require_relative './add_goal'
@@ -37,12 +36,12 @@ def print_goals
 end
 
 def print_plus_minus
-  Plus_minus.all.each do |plus|
+  PlusMinus.all.each do |plus|
     puts "#{plus[:game_id]} #{plus[:player_id]} #{plus[:plus_minus]}"
   end
 
   Player.all.each do |player|
-    puts "#{player[:id]} #{player[:last_name]} (#{Plus_minus.where(player_id: player[:id]).sum(:plus_minus)})"
+    puts "#{player[:id]} #{player[:last_name]} (#{PlusMinus.where(player_id: player[:id]).sum(:plus_minus)})"
   end
 end
 

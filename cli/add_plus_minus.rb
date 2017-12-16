@@ -5,7 +5,7 @@ def plus_minus
   game_id = get_game_id
 
   # Peroid
-  peroid = get_period
+  period = get_period
 
   # Plus or Minus
   puts 'Was it [p]lus or [m]inus?'
@@ -22,11 +22,11 @@ def plus_minus
 
   puts 'What are the players jersey numbers?[18,10,3,15,12]'
   gets.split(',').each do |player_id|
-    plus_minus = Plus_minus.new
+    plus_minus = PlusMinus.new
     plus_minus.game_id = game_id
     plus_minus.player_id = player_id
     plus_minus.plus_minus = pm
-    plus_minus.peroid = peroid
+    plus_minus.period = period
     plus_minus.save
   end
 end
