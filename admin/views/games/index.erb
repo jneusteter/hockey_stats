@@ -1,30 +1,33 @@
 <ul class="nav nav-tabs">
-  <li class=active> <%= link_to tag_icon(:list, pat(:list)), url(:games, :index) %></li>
-  <li> <%= link_to tag_icon(:plus, pat(:new)), url(:games, :new) %></li>
+  <li class="active">
+    <%= link_to tag_icon(:list, pat(:list)), url(:games, :index) %></li>
+  <li>
+    <%= link_to tag_icon(:plus, pat(:new)), url(:games, :new) %></li>
 </ul>
-<div class=tabs-content>
-  <table id=list class="table table-striped table-hover table-condensed">
+<div class="tabs-content">
+  <table id="list" class="table table-striped table-hover table-condensed">
     <thead>
       <tr>
         <th class="header list-menu">
-          <div class=dropdown>
+          <div class="dropdown">
             <a href="#" class="list-menu-toggle dropdown-toggle" data-toggle='dropdown'>
-              <%= tag_icon :magic %> <span class=caret></span>
+              <%= tag_icon :magic %>
+              <span class="caret"></span>
             </a>
-            <ul class="list-menu dropdown-menu" role=menu>
-              <li class=list-menu-wrapper>
+            <ul class="list-menu dropdown-menu" role="menu">
+              <li class="list-menu-wrapper">
                 <%= link_to tag_icon('check-square-o', pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link' %>
               </li>
-              <li class=list-menu-wrapper.list-menu-wrapper-disabled>
+              <li class="list-menu-wrapper.list-menu-wrapper-disabled">
                 <%= link_to tag_icon('square-o', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled' %>
               </li>
               <li class="list-menu-divider divider"></li>
-              <li class=list-menu-wrapper.list-menu-wrapper-disabled>
+              <li class="list-menu-wrapper.list-menu-wrapper-disabled">
                 <%=link_to tag_icon('trash-o', pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled' %>
                 <div class='list-menu-popover-delete-selected popover right'>
-                  <div class=arrow></div>
-                  <h3 class=popover-title><%= pat(:delete_selected_title) %></h3>
-                  <div class=popover-content>
+                  <div class="arrow"></div>
+                  <h3 class="popover-title"><%= pat(:delete_selected_title) %></h3>
+                  <div class="popover-content">
                     <% form_tag url(:games, :destroy_many), :method => :delete do %>
                       <%=hidden_field_tag :game_ids, :'data-delete-many-ids' => true %>
                       <%=submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small' %>
@@ -36,43 +39,57 @@
             </ul>
           </div>
         </th>
-                <th class=header> <%= mat(:game, :id) %></th>
-                <th class=header> <%= mat(:game, :game_number) %></th>
-                <th class=header> <%= mat(:game, :team_id) %></th>
-                <th class=header> <%= mat(:game, :datetime_played) %></th>
-                <th class=header> <%= mat(:game, :home_away) %></th>
-                <th class=header> <%= mat(:game, :type) %></th>
-                <th class="header list-row-action-header"></th>
+        <th class="header">
+          <%= mat(:game, :id) %></th>
+        <th class="header">
+          <%= mat(:game, :team_id) %></th>
+        <th class="header">
+          <%= mat(:game, :date) %></th>
+        <th class="header">
+          <%= mat(:game, :home_away) %></th>
+        <th class="header">
+          <%= mat(:game, :type) %></th>
+        <th class="header list-row-action-header"></th>
       </tr>
     </thead>
 
     <tbody>
       <% @games.each do |game| %>
-        <tr class=list-row>
+        <tr class="list-row">
           <td class="list-column list-selectable">
             <%= check_box_tag 'game_ids[]', :value => game.id, :class => 'list-selectable-checkbox' %>
-           </td>
-          <td class=list-column> <%= game.id %> </td>
-          <td class=list-column> <%= game.game_number %> </td>
-          <td class=list-column> <%= game.team_id %> </td>
-          <td class=list-column> <%= game.datetime_played %> </td>
-          <td class=list-column> <%= game.home_away %> </td>
-          <td class=list-column> <%= game.type %> </td>
+          </td>
+          <td class="list-column">
+            <%= game.id %>
+          </td>
+          <td class="list-column">
+            <%= game.team.town %>
+            <%= game.team.name %>
+          </td>
+          <td class="list-column">
+            <%= game.datetime_played %>
+          </td>
+          <td class="list-column">
+            <%= game.home_away %>
+          </td>
+          <td class="list-column">
+            <%= game.type %>
+          </td>
           <td class="list-column list-row-action">
             <div class='list-row-action-wrapper'>
-               <%= link_to tag_icon(:edit), :href => url(:games, :edit, :id => game.id), :rel => :tooltip, :title => "#{pat(:edit)} game", :class => 'list-row-action-wrapper-link' %>
-               <%= link_to tag_icon('trash-o'), :rel => :tooltip, :title => "#{pat(:delete)} game", :class => 'list-row-action-delete-one list-row-action-wrapper-link' %>
-               <div class="popover list-row-action-popover-delete-one left">
-                 <div class=arrow> </div>
-                 <h3 class=popover-title><%= pat(:delete, :model => "game") %></h3>
-                 <div class=popover-content>
-                   <% form_tag url(:games, :destroy, :id => game.id), :method => :delete do %>
-                     <%= submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small' %>
-                     <div class="btn btn-default btn-small cancel"><%= pat(:cancel) %></div>
-                   <% end %>
-                 </div>
-               </div>
-             </div>
+              <%= link_to tag_icon(:edit), :href => url(:games, :edit, :id => game.id), :rel => :tooltip, :title => "#{pat(:edit)} game", :class => 'list-row-action-wrapper-link' %>
+              <%= link_to tag_icon('trash-o'), :rel => :tooltip, :title => "#{pat(:delete)} game", :class => 'list-row-action-delete-one list-row-action-wrapper-link' %>
+              <div class="popover list-row-action-popover-delete-one left">
+                <div class="arrow"></div>
+                <h3 class="popover-title"><%= pat(:delete, :model => "game") %></h3>
+                <div class="popover-content">
+                  <% form_tag url(:games, :destroy, :id => game.id), :method => :delete do %>
+                    <%= submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small' %>
+                    <div class="btn btn-default btn-small cancel"><%= pat(:cancel) %></div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
       <% end %>
