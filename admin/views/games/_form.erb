@@ -1,9 +1,9 @@
-<% error = @game.errors.key?(:game_number) && @game.errors[:game_number].count > 0 %>
+<% error = @game.errors.key?(:id) && @game.errors[:id].count > 0 %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :game_number, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_field :game_number, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
-    <span class='help-inline'><%= error ? f.error_message_on(:game_number) : "Ex: A022" %></span>
+    <%= f.text_field :id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:id) : "Ex: A022" %></span>
   </div>
 </fieldset>
 <% error = @game.errors.key?(:team_id) && @game.errors[:team_id].count > 0 %>
