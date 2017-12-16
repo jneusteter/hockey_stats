@@ -8,4 +8,5 @@ db/*.db
 .*.sw*
 .stfolder
 .stversions/
+game_sheets/
 Gemfile.lock
