@@ -10,14 +10,6 @@ RSpec.configure do |conf|
   conf.before(:suite) do
     FactoryBot.find_definitions
   end
-  # FactoryBot
-  conf.include FactoryBot::Syntax::Methods
-  FactoryBot.definition_file_paths = [
-    File.join(Padrino.root, 'factories'),
-    File.join(Padrino.root, 'test', 'factories'),
-    File.join(Padrino.root, 'spec', 'factories')
-  ]
-  FactoryBot.find_definitions
 
   # Database cleaner
   conf.before(:each) do
