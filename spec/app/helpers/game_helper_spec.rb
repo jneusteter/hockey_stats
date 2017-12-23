@@ -7,7 +7,9 @@ RSpec.describe "HockeyStatsTracker::App::GameHelper" do
     subject { helpers }
 
     it "return clean date" do
-      expect(format_date("2017-10-06 19:15:00 -0400")).to eq("Oct 10 2017 4:15pm")
+      date = DateTime.parse("2017-10-10 19:15:00 -0400")
+      formated = "Oct 10 2017  7:15pm"
+      expect(helpers.format_date(date)).to eq(formated)
     end
   end
 end
