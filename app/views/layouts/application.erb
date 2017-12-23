@@ -24,8 +24,44 @@
 
     <footer></footer>
 
+    <%= javascript_include_tag 'chart.bundle.min.js' %>
     <%= javascript_include_tag 'jquery-1.11.0.min', (Padrino.env == :production ? 'bootstrap/bootstrap.min' : %w[bootstrap/affix bootstrap/alert bootstrap/button bootstrap/carousel bootstrap/collapse bootstrap/dropdown bootstrap/tooltip
     bootstrap/transition bootstrap/modal bootstrap/popover bootstrap/scrollspy bootstrap/tab]), :application %>
+
+    <script type="text/javascript">
+      var goals_per_game_canvas = document.getElementById('goals_per_game').getContext('2d');
+      var goals_per_game_chart = new Chart(goals_per_game_canvas, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+          labels: <%= @list_game_ids.to_json.html_safe %>,
+          datasets: [
+            {
+              label: "Goals",
+              // backgroundColor: 'orange',
+              borderColor: 'red',
+              data: <%= @goals_per_game_array %>
+            },
+            {
+              label: "Assist",
+              borderColor: 'rgb(75, 192, 192)',
+              data: <%= @assist_per_game_array %>
+            },
+            {
+              label: "Plus Minus",
+              backgroundColor: 'orange',
+              borderColor: 'orange',
+              data: <%= @plus_minus_per_game_array %>
+            }
+          ]
+        },
+
+        // Configuration options go here
+        options: {}
+      });
+    </script>
 
   </body>
 </html>

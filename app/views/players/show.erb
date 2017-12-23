@@ -1,3 +1,9 @@
 <h1><%= @player.first_name %> <%= @player.last_name %> </h1>
-  <%= total_plus_minus(@player.id) %>
+  <h4>Plus Minus: <%= total_plus_minus(@player.id) %> Goals: <%= @player.goals.count %></h4>
 <hr>
+
+<div class="row">
+  <div class="col-md-6">
+    <canvas id="goals_per_game" width="600" height="400"></canvas>
+  </div>
+</div>
