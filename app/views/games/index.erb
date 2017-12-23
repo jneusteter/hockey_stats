@@ -16,7 +16,7 @@
     <tr>
       <td><%= game.id %></td>
       <td><%= game.team.town %> <%= game.team.name %> </td>
-      <td><%= game.datetime_played %></td>
+      <td><%= format_date(game.datetime_played) %></td>
       <td><%= game.home_away.capitalize %></td>
       <td><%= game.type.capitalize %></td>
       <td><%= game.goals.count %></td>
