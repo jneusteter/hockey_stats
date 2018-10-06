@@ -3,10 +3,6 @@
 module HockeyStatsTracker
   class App
     module PlayersHelper
-      def total_plus_minus(player_id)
-        PlusMinus.total_plus_minus(player_id)
-      end
-
       def total_assist_one(player_id)
         Goal.where(assist_one: player_id).count
       end

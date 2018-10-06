@@ -17,7 +17,7 @@
       <td><%= player.goals.count %></td>
       <td><%= total_assist_one(player.id) %></td>
       <td><%= total_assist_two(player.id) %></td>
-      <td><%= total_plus_minus(player.id) %></td>
+      <td><%= PlusMinus.total_by_player(player.id) %></td>
     </tr>
     <% end %>
   </tbody>

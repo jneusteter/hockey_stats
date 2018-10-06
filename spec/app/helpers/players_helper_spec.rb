@@ -1,5 +1,4 @@
 require 'spec_helper'
 
-RSpec.describe "HockeyStatsTracker::App::PlayersHelper" do
-  
+RSpec.describe 'HockeyStatsTracker::App::PlayersHelper' do
 end

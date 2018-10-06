@@ -28,11 +28,11 @@
 Padrino.configure_apps do
   # enable :sessions
   set :session_secret, 'c19c9611c74835b28ed30a3b9f827b9bd52ead0a8f2a1c2f2a1ccc0c23fbd259'
-  set :protection, :except => :path_traversal
+  set :protection, except: :path_traversal
   set :protect_from_csrf, true
 end
 
 # Mounts the core application for this project
 
-Padrino.mount("HockeyStatsTracker::Admin", :app_file => Padrino.root('admin/app.rb')).to("/admin")
-Padrino.mount('HockeyStatsTracker::App', :app_file => Padrino.root('app/app.rb')).to('/')
+Padrino.mount('HockeyStatsTracker::Admin', app_file: Padrino.root('admin/app.rb')).to('/admin')
+Padrino.mount('HockeyStatsTracker::App', app_file: Padrino.root('app/app.rb')).to('/')

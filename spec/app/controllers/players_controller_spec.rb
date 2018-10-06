@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-RSpec.describe "/players" do
+RSpec.describe '/players' do
 end

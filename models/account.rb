@@ -1,5 +1,4 @@
 class Account < Sequel::Model
-
   plugin :validation_helpers
 
   attr_accessor :password, :password_confirmation
@@ -34,11 +33,13 @@ class Account < Sequel::Model
   # Replace ActiveRecord method.
   #
   def self.find_by_id(id)
-    self[id] rescue nil
+    self[id]
+  rescue StandardError
+    nil
   end
 
   def has_password?(password)
-    ::BCrypt::Password.new(self.crypted_password) == password
+    ::BCrypt::Password.new(crypted_password) == password
   end
 
   private
@@ -48,6 +49,6 @@ class Account < Sequel::Model
   end
 
   def password_required
-    self.crypted_password.blank? || password.present?
+    crypted_password.blank? || password.present?
   end
 end

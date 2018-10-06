@@ -4,7 +4,7 @@ module HockeyStatsTracker
   class App
     module GameHelper
       def format_date(date)
-        date.strftime("%b %d %Y %l:%M%P")
+        date.strftime('%b %d %Y %l:%M%P')
       end
     end
 

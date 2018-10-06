@@ -52,7 +52,7 @@ end
 
 def backup_db
   t = Time.now
-  system("cp ../db/hockey_stats_tracker_production.db ./backups/#{t.strftime("%b%d%Y:%I:%M:%S%p")}_backup.db")
+  system("cp ../db/hockey_stats_tracker_production.db ./backups/#{t.strftime('%b%d%Y:%I:%M:%S%p')}_backup.db")
 end
 
 def get_game_id
@@ -61,9 +61,7 @@ def get_game_id
   # Game ID
   puts "What is the game id?[Default = #{last_game_id}] "
   game_id = gets.chomp
-  if game_id == ''
-    game_id = last_game_id
-  end
+  game_id = last_game_id if game_id == ''
 
   return game_id
   puts "The game ID is #{game_id}"

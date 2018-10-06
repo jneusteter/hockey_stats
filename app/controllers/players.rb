@@ -8,37 +8,27 @@ HockeyStatsTracker::App.controllers :players do
   get :show, with: :id do
     @title = 'Player'
     @player = Player[params[:id]]
-    @list_game_ids = Game.map(:id)
-    # @goals_per_game_array =  Goal.where(player_id: params[:id]).group_and_count(:game_id).map(:count)
-    # Goals
-    @goals_per_game_array = []
-    @list_game_ids.each do |game|
-      goals = Goal.where(game_id: game).where(player_id: params[:id])
-      if goals.nil?
-        @goals_per_game_array << 0
-      else
-        @goals_per_game_array << goals.count
-      end
-    end
-    # PlusMinus
-    @plus_minus_per_game_array = []
-    @list_game_ids.each do |game|
-      plus = PlusMinus.where(game_id: game).where(player_id: params[:id]).sum(:plus_minus)
-      if plus.nil?
-        @plus_minus_per_game_array << 0
-      else
-        @plus_minus_per_game_array << plus
-      end
-    end
-    # Assist
-    @assist_per_game_array = []
-    @list_game_ids.each do |game|
-      assist = Goal.where(game_id: game).where(assist_one: params[:id])
-      if assist.nil?
-        @assist_per_game_array << 0
-      else
-        @assist_per_game_array << assist.count
-      end
+
+    @tabs = [{
+      name: 'All',
+      goal_count: Goal.where(player_id: params[:id]).count,
+      assist_count: Goal.where(assist_one: params[:id]).count,
+      labels: Game.map(:id),
+      goals_per_game: [9, 3, 6, 7],
+      assist_per_game: [0, 5, 6],
+      plus_minus_per_game: [0, 8, 7]
+    }]
+
+    Team.map(:category).map.uniq.each do |c|
+      @tabs << {
+        name: c,
+        goal_count: Goal.count_by_category(params[:id], c),
+        assist_count: Goal.assists_by_category(params[:id], c),
+        labels: Game.id_by_category(c),
+        goals_per_game: Goal.goals_per_game_by_category(params[:id], c),
+        assist_per_game: [0, 5, 6],
+        plus_minus_per_game: [0, 8, 7]
+      }
     end
     render 'players/show'
   end

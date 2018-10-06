@@ -1,5 +1,5 @@
 def add_goal
-  #Backup Database
+  # Backup Database
   backup_db
   print_goals
 

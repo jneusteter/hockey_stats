@@ -1,0 +1,34 @@
+<script type="text/javascript">
+  var <%= tab[:name].downcase %>_canvas = document.getElementById('<%= tab[:name].downcase %>').getContext('2d');
+  var <%= tab[:name].downcase %>_chart = new Chart(<%= tab[:name].downcase %>_canvas, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+      labels: <%= tab[:labels].to_json.html_safe %>,
+      datasets: [
+        {
+          label: "Goals",
+          // backgroundColor: 'orange',
+          borderColor: 'red',
+          data: <%= tab[:goals_per_game] %>
+        },
+        {
+          label: "Assist",
+          borderColor: 'rgb(75, 192, 192)',
+          data: <%= tab[:assist_per_game] %>
+        },
+        {
+          label: "Plus Minus",
+          backgroundColor: 'orange',
+          borderColor: 'orange',
+          data: <%= tab[:plus_minus_per_game] %>
+        }
+      ]
+    },
+
+    // Configuration options go here
+    options: {}
+  });
+</script>

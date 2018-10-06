@@ -1,9 +1,24 @@
-<h1><%= @player.first_name %> <%= @player.last_name %> </h1>
-  <h4>Plus Minus: <%= total_plus_minus(@player.id) %> Goals: <%= @player.goals.count %></h4>
-<hr>
+<h1><%= @player.first_name %>
+  <%= @player.last_name %>
+</h1>
 
-<div class="row">
-  <div class="col-md-6">
-    <canvas id="goals_per_game" width="600" height="400"></canvas>
-  </div>
+<ul class="nav nav-tabs">
+  <% @tabs.each do |tab| %>
+    <li>
+      <a data-toggle="tab" href="#<%= tab[:name] %>"><%= tab[:name] %></a>
+    </li>
+  <% end %>
+</ul>
+
+<div class="tab-content">
+  <% @tabs.each do |tab| %>
+    <div id="<%= tab[:name] %>" class="tab-pane fade in">
+      Goals: <%= tab[:goal_count] %> | Assist: <%= tab[:assist_count] %>
+      <hr>
+      <div class="col-md-6">
+        <canvas id="<%= tab[:name].downcase %>" width="600" height="300"></canvas>
+      </div>
+      <%= partial 'players/graph.js.erb', :locals => { tab: tab } %>
+    </div>
+  <% end %>
 </div>
