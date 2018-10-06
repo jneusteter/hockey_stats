@@ -9,6 +9,7 @@ gem 'bcrypt'
 gem 'erubi', '~> 1.6'
 gem 'sequel'
 gem 'sqlite3'
+gem 'terminal-table'
 
 # Test requirements
 gem 'factory_bot', '~> 4.8', '>= 4.8.2'
