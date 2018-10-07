@@ -26,26 +26,19 @@ class Goal < Sequel::Model
   def self.add
     system('clear')
     Player.print_all
-    puts 'Who scored the goal?'
-    player_id = gets.chomp
-  
-    # Assist One
-    puts 'Who got assist one?'
-    assist_one = gets.chomp
-  
-    # Assist two
-    puts 'Who got assist two?'
-    assist_two = gets.chomp
-  
-    # Period
-    period = get_period
-  
     goal = Goal.new
-    goal.game_id = game_id
-    goal.player_id = player_id
-    goal.assist_one = assist_one
-    goal.assist_two = assist_two
-    goal.period = period
+
+    puts 'What is the game id: '
+    goal.game_id = gets.chomp
+
+    puts 'Who scored the goal?'
+    goal.player_id = gets.chomp
+
+    puts 'Who got assist one?'
+    goal.assist_one = gets.chomp
+
+    puts 'Which period(Overtime = 4): '
+    goal.period = gets.chomp
     goal.save
   end
 
