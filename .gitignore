@@ -10,3 +10,4 @@ db/*.db
 .stversions/
 game_sheets/
 Gemfile.lock
+cli/config.rb
