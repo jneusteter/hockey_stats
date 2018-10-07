@@ -63,18 +63,12 @@ def pgaid
   Game.print(gets.chomp)
 end
 
-# Delete Game
 def dga
   system('clear')
   Game.print_all
   puts 'What is the game id you want to delete(BE CAREFUL!!): '
   game_id = gets.chomp
   Game.where(id: game_id).delete
-end
-
-# Add goals
-def ag
-  Goal.add
 end
 
 # Print goals
