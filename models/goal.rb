@@ -23,6 +23,32 @@ class Goal < Sequel::Model
     end
   end
 
+  def self.add
+    system('clear')
+    Player.print_all
+    puts 'Who scored the goal?'
+    player_id = gets.chomp
+  
+    # Assist One
+    puts 'Who got assist one?'
+    assist_one = gets.chomp
+  
+    # Assist two
+    puts 'Who got assist two?'
+    assist_two = gets.chomp
+  
+    # Period
+    period = get_period
+  
+    goal = Goal.new
+    goal.game_id = game_id
+    goal.player_id = player_id
+    goal.assist_one = assist_one
+    goal.assist_two = assist_two
+    goal.period = period
+    goal.save
+  end
+
   def self.bulk_add(game_id, data)
     data.split('|').each do |event|
       goal = event.split(',')

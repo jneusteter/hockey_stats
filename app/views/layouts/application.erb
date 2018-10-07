@@ -14,7 +14,6 @@
     <nav class="navbar-inverse">
       <div class="container">
         <%= link_to 'Home', url(:base, :index), class: 'navbar-brand', title: 'Hockey Stats Home' %>
-        <%= link_to 'Players', url(:players, :index), class: 'navbar-brand', title: 'Players' %>
         <%= link_to 'Games', url(:games, :index), class: 'navbar-brand', title: 'Games' %>
       </div>
     </nav>
@@ -25,7 +24,6 @@
 
     <footer></footer>
 
-    <%= Padrino.env == :production ? 'google-analytics' : '' %>
     <%= javascript_include_tag 'jquery-1.11.0.min', (Padrino.env == :production ? 'bootstrap/bootstrap.min' : %w[bootstrap/affix bootstrap/alert bootstrap/button bootstrap/carousel bootstrap/collapse bootstrap/dropdown bootstrap/tooltip
     bootstrap/transition bootstrap/modal bootstrap/popover bootstrap/scrollspy bootstrap/tab]), :application %>
 
