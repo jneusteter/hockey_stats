@@ -76,6 +76,11 @@ def pg
   Goal.print_all
 end
 
+# Add Goal
+def ag
+  Goal.add
+end
+
 # Print plus minus
 def ppm
   PlusMinus.print_all

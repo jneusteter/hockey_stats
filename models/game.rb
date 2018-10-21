@@ -68,6 +68,6 @@ class Game < Sequel::Model
     puts 'Enter stats: g,p1,g18,a13,3,1,4|ga,p2,12,14,15,16,16'
     data = gets.chomp
     Goal.bulk_add(game_id, data)
-    # PlusMinus.bulk_add(game_id, data)
+    PlusMinus.bulk_add(game_id, data)
   end
 end
