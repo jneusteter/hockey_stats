@@ -26,7 +26,7 @@ MAIN_MENU = "
 
       ## Plus Minus ##
 
-      [p]lus_minus
+      [a]dd [p]lus [m]inus
       [p]rint [p]lus [m]inus
 
       ## Player ##
@@ -79,6 +79,11 @@ end
 # Add Goal
 def ag
   Goal.add
+end
+
+# Add plus minus
+def apm
+  PlusMinus.add
 end
 
 # Print plus minus
