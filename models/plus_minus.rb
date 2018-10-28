@@ -18,26 +18,26 @@ class PlusMinus < Sequel::Model
     puts 'What is the Game id: '
     game_id = gets.chomp
 
-    puts 'What period(overtime = 4)'
-    period = gets.chomp
+    puts 'List the players(+, p1, 12, 12, 34, 53|-, p2, 12, 12, 32,32)'
+    total_pms = gets.chomp
 
-    puts 'Is it a plus or minus(p or m)'
-    plus_minus = gets.chomp
-
-    puts 'List the players(12,12,34,53)'
-    players = gets.chomp
-
-    players.split(',').each do |player_id|
-      pm = PlusMinus.new
-      pm.game_id = game_id
-      pm.player_id = player_id
-      pm.period = period
-      pm.plus_minus = if plus_minus == 'p'
-                        1
-                      elsif plus_minus == 'm'
-                        -1
-                      end
-      pm.save
+    total_pms.split('|').each do |pms| 
+      pms.split(',').each do |pm|
+        plus_or_minus = 'pm[0]'
+        period = 'pm[1]'
+        pm.pop[0]
+        pm.pop[1]
+        pm = PlusMinus.new
+        pm.game_id = game_id
+        pm.player_id = player_id
+        pm.period = period
+        pm.plus_minus = if plus_minus == 'p'
+                          1
+                        elsif plus_minus == 'm'
+                          -1
+                        end
+        pm.save
+      end
     end
   end
 end
