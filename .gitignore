@@ -9,5 +9,5 @@ db/*.db
 .stfolder
 .stversions/
 game_sheets/
-Gemfile.lock
 cli/config.rb
+Gemfile.lock

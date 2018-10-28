@@ -15,6 +15,7 @@ class PlusMinus < Sequel::Model
   end
 
   def self.add
+    Game.print_all
     puts 'What is the Game id: '
     game_id = gets.chomp
 
