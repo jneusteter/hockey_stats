@@ -1,6 +1,10 @@
 class Team < Sequel::Model
   one_to_many :games
 
+  def self.categories
+    order(:category).map(:category).uniq
+  end
+
   def self.print_all
     system('clear')
     all.each do |team|

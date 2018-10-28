@@ -11,7 +11,7 @@ HockeyStatsTracker::App.controllers :players do
 
     @tabs = [{
       name: 'All',
-      goal_count: Goal.where(player_id: params[:id]).count,
+      goal_count: Goal.total_by_player(params[:id]),
       assist_count: Goal.where(assist_one: params[:id]).count,
       labels: Game.map(:id),
       goals_per_game: [9, 3, 6, 7],
@@ -19,7 +19,7 @@ HockeyStatsTracker::App.controllers :players do
       plus_minus_per_game: [0, 8, 7]
     }]
 
-    Team.map(:category).map.uniq.each do |c|
+    Team.categories.each do |c|
       @tabs << {
         name: c,
         goal_count: Goal.count_by_category(params[:id], c),

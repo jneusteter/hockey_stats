@@ -12,6 +12,10 @@ class Goal < Sequel::Model
     puts Terminal::Table.new rows: rows
   end
 
+  def self.total_by_player(player)
+    where(player_id: player).count
+  end
+
   def self.count_by_category(player_id, category)
     where(player_id: player_id).where(game_id: Game.where(team_id: Team.where(category: category).map(:id)).map(:id)).count
   end
@@ -49,25 +53,5 @@ class Goal < Sequel::Model
     goal.period = gets.chomp
   
     goal.save
-  end
-
-  def self.bulk_add(game_id, data)
-    data.split('|').each do |event|
-      goal = event.split(',')
-      next unless goal[0] == 'g'
-
-      goal_forward = Goal.new
-      goal_forward.period = goal.detect { |item| item.start_with?('p') }
-                                .tr('p', '')
-                                .to_i
-      goal_forward.player_id = goal.detect { |item| item.start_with?('g') }
-                                   .tr('g', '')
-                                   .to_i
-      goal_forward.assist_one = goal.detect { |item| item.start_with?('a') }
-                                    .tr('a', '')
-                                    .to_i
-      goal_forward.game_id = game_id
-      goal_forward.save
-    end
   end
 end

@@ -12,7 +12,7 @@
           label: "Goals",
           // backgroundColor: 'orange',
           borderColor: 'red',
-          data: <%= tab[:goals_per_game] %>
+          data: <%= tab[:goals_per_game].to_json.html_safe %>
         },
         {
           label: "Assist",
