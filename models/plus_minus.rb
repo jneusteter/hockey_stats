@@ -5,7 +5,11 @@ class PlusMinus < Sequel::Model
   def self.print_all
     rows = []
     all.each do |plus|
-      rows << [plus.id]
+      rows << [plus.game_id,
+               plus.player.first_name,
+               plus.player.last_name,
+               plus.plus_minus,
+               plus.period]
     end
     puts Terminal::Table.new rows: rows
   end
@@ -19,26 +23,35 @@ class PlusMinus < Sequel::Model
     puts 'What is the Game id: '
     game_id = gets.chomp
 
-    puts 'What period(overtime = 4)'
-    period = gets.chomp
+    puts 'List the players(+, p1, 10, 10, 10|-, p2, 10, 10, 10)'
+    total_pms = gets.chomp
 
-    puts 'Is it a plus or minus(p or m)'
-    plus_minus = gets.chomp
-
-    puts 'List the players(12,12,34,53)'
-    players = gets.chomp
-
-    players.split(',').each do |player_id|
-      pm = PlusMinus.new
-      pm.game_id = game_id
-      pm.player_id = player_id
-      pm.period = period
-      pm.plus_minus = if plus_minus == 'p'
-                        1
-                      elsif plus_minus == 'm'
-                        -1
-                      end
-      pm.save
+    total_pms.split('|').each do |pms|
+      array = pms.split(',')
+      period = array[1].tr('p', '').to_i
+      if array[0] == '+'
+        array.drop(2).each do |player|
+          pm = PlusMinus.new
+          pm.game_id = game_id
+          pm.player_id = player.tr(' ', '').to_i
+          pm.plus_minus = 1
+          pm.period = period
+          pm.save
+          print_all
+        end
+      elsif array[0] == '-'
+        array.drop(2).each do |player|
+          pm = PlusMinus.new
+          pm.game_id = game_id
+          pm.player_id = player.tr(' ', '').to_i
+          pm.plus_minus = -1
+          pm.period = period
+          pm.save
+          print_all
+        end
+      else
+        puts 'Did not recognize input'
+      end
     end
   end
 end
