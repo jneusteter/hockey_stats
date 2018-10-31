@@ -2,6 +2,8 @@
   <%= @player.last_name %>
 </h1>
 
+<%= Goal.count_by_category(10, 'All') %>
+
 <ul class="nav nav-tabs">
   <% @tabs.each do |tab| %>
     <li>

@@ -17,7 +17,14 @@ class Goal < Sequel::Model
   end
 
   def self.count_by_category(player_id, category)
-    where(player_id: player_id).where(game_id: Game.where(team_id: Team.where(category: category).map(:id)).map(:id)).count
+    if category == 'All'
+      where(player_id: player_id).group_and_count(:game_id).all
+    else
+      where(player_id: player_id)
+      .where(game_id: Game.where(team_id: Team.where(category: category)
+      .map(:id)).map(:id))
+      .count
+    end
   end
 
   def self.assists_by_category(player_id, category)

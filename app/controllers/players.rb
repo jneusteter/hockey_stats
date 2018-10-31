@@ -14,7 +14,7 @@ HockeyStatsTracker::App.controllers :players do
       goal_count: Goal.total_by_player(params[:id]),
       assist_count: Goal.where(assist_one: params[:id]).count,
       labels: Game.map(:id),
-      goals_per_game: [9, 3, 6, 7],
+      goals_per_game: Goal.count_by_category(params[:id], 'All'),
       assist_per_game: [0, 5, 6],
       plus_minus_per_game: [0, 8, 7]
     }]
